@@ -1,8 +1,13 @@
+with open("common_passwords.txt") as f:
+    common_passwords = [line.strip() for line in f]
 # define your list of special characters
 special_characters = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '[', ']', '{', '}', '|', '\\', ':', ';', '"', "'", '<', '>', ',', '.', '?', '/']
 
 # define a function called analyze_password that takes password as a parameter
 def analyze_password(password):
+    if password.lower() in common_passwords:
+        print("This password is very common and should not be used.")
+        return
 
     # use len() to check the length
     length = len(password)
